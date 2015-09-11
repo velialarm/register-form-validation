@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Курсов проект</title>
+
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/register.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container">
+
+
+    <form class="form-register">
+
+        <div id="errorMessage" class="alert alert-danger" style="display: none;"></div>
+
+        <div class="row">
+            <h2 class="form-signin-heading">Register</h2>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="inputFirstName">Name</label>
+                <input type="text" id="inputFirstName" class="form-control" placeholder="enter first name" required autofocus>
+                <input type="text" id="inputLastName" class="form-control" placeholder="enter last name" required autofocus>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="inputEmail">Choose your username</label>
+
+                <div class="input-group">
+                    <input type="email" id="inputEmail" class="form-control" placeholder="enter username" required
+                           autofocus>
+                    <span class="input-group-addon">@gmail.com</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <label for="inputPassword">Create a password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Create a password" required>
+        </div>
+
+        <div class="row">
+            <label for="inputConfirmPassword">Confirm your password</label>
+            <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm your password"
+                   required>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="selectBirthday">Birthday</label>
+                <select id="selectBirthday" class="form-control">
+                    <option>Month</option>
+                    <option>January</option>
+                    <option>February</option>
+                </select>
+                <input type="text" id="inputBirtDay" class="form-control" placeholder="enter day" required>
+                <input type="text" id="inputBirtYear" class="form-control" placeholder="enter year" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="selectGender">Gender</label>
+                <select id="selectGender" class="form-control">
+                    <option>Select one...</option>
+                    <option>Male</option>
+                    <option>female</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <label for="mobilePhone">Mobile phone</label>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button id="countryBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="countryValue">Country</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu country">
+                        <li><img src="image/BulgariaSmall.png"><span>Bulgarian</span></li>
+                        <li><img src="image/AustriaSmall.png"><span>Austria</span></li>
+                        <li><img src="image/GermanySmall.png"><span>Germany</span></li>
+                    </ul>
+                </div>
+                <input id="mobilePhone" type="text" value="" class="form-control" placeholder="enter mobile phone number" aria-label="...">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="currentEmail">Create a password</label>
+                <input type="email" id="currentEmail" class="form-control" placeholder="enter your current email"
+                       required>
+            </div>
+        </div>
+
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me">Skip this verification (phone verification may be required)
+            </label>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+
+</div>
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/validation.js"></script>
+
+<script>
+
+    //validate current email
+    $("#currentEmail").on("change", function(){
+        console.log("changed current email");
+    });
+
+    //add country code in input field
+    $(".country li").on("click", function(){
+        console.log("select country: " + $(this).text());
+        var selectedCountry = $(this).text().trim();
+        $(".countryValue").html(selectedCountry);
+        switch (selectedCountry.toUpperCase()){
+            case 'BULGARIAN':
+                    $('#mobilePhone').attr('value', '+359 ');
+                    break;
+            case 'AUSTRIA':
+                $('#mobilePhone').attr('value', '+43 ');
+                break;
+            case 'GERMANY':
+                $('#mobilePhone').attr('value', '+49 ');
+                break;
+        };
+    });
+
+</script>
+
+</body>
+</html>
